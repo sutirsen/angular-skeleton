@@ -3,13 +3,14 @@ var servicesMod = angular.module('univinks.services', [
     'ngCookies'
   ]);
 
-servicesMod.factory('DemoService', ['$http', function($http){
+var baseURL = 'http://0.0.0.0:3000';
+servicesMod.factory('UserService', ['$http', function($http){
   return {
-    ping: function(){
+    signup: function(userObj){
       return $http({
-        method: 'GET',
-        url: 'http://0.0.0.0:3000/users',
-        data: {'a':'b'}
+        method: 'POST',
+        url: `${baseURL}/signup`,
+        data: userObj
       });
     }
   };
